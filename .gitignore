@@ -1,0 +1,9 @@
+node_modules/
+dist/
+out/
+qa/shots/
+qa/site-shots/
+qa/out/
+art/
+*.log
+.DS_Store

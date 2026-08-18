@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fatty Lumpkin Doc Compare — redline two Word documents in one right-click</title>
+<meta name="description" content="A small desktop app for Mac and Windows. Select two Word documents, right-click, and get a track-changes document or a marked-up PDF. Nothing is uploaded.">
+<meta name="theme-color" content="#FBF7EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15141A" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Fatty Lumpkin Doc Compare">
+<meta property="og:description" content="Redline two Word documents in one right-click. Mac and Windows. Nothing is uploaded.">
+<meta property="og:image" content="https://redline.bombadillo-ai.com/assets/og-image.jpg">
+<meta property="og:url" content="https://redline.bombadillo-ai.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://redline.bombadillo-ai.com/assets/og-image.jpg">
+</head>
+<body>
+
+<a class="skip" href="#download">Skip to downloads</a>
+
+<header class="nav">
+  <a class="nav-brand" href="#top">
+    <img src="assets/pony-mark.webp" alt="" width="32" height="32">
+    <span>Fatty Lumpkin <em>Doc Compare</em></span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="#how">How it works</a>
+    <a href="#output">What you get</a>
+    <a href="#install" class="nav-install">Installing</a>
+    <a href="#download" class="nav-cta">Download</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ─────────────────────────────── hero ─────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Mac &amp; Windows · free · nothing leaves your computer</p>
+      <h1>Redline two Word documents in <em>one right-click</em>.</h1>
+      <p class="lede">
+        Select the old draft and the new one, right-click, choose <b>Redline with Fatty Lumpkin</b>.
+        Seconds later you have a proper track-changes document, a marked-up PDF, or both —
+        sitting next to the originals.
+      </p>
+
+      <div id="download" tabindex="-1" class="download">
+        <a class="btn btn-primary" id="dl-primary" href="https://github.com/MCALLERS/fatty-lumpkin-doc-compare/releases/latest">
+          <span class="btn-icon" id="dl-primary-icon" aria-hidden="true"></span>
+          <span class="btn-lines"><b id="dl-primary-label">Download</b><small id="dl-primary-note">Mac and Windows installers</small></span>
+        </a>
+        <ul class="dl-all" id="dl-all">
+          <li><a id="dl-mac-arm" href="https://github.com/MCALLERS/fatty-lumpkin-doc-compare/releases/latest">Mac · Apple Silicon</a></li>
+          <li><a id="dl-mac-intel" href="https://github.com/MCALLERS/fatty-lumpkin-doc-compare/releases/latest">Mac · Intel</a></li>
+          <li><a id="dl-win" href="https://github.com/MCALLERS/fatty-lumpkin-doc-compare/releases/latest">Windows 10 / 11</a></li>
+          <li><a href="https://github.com/MCALLERS/fatty-lumpkin-doc-compare/releases/latest">All releases</a></li>
+        </ul>
+        <p class="which-mac">On a Mac and not sure which build? <b>Apple menu → About This Mac</b> — “Apple M1” or later means Apple&nbsp;Silicon.</p>
+      </div>
+
+      <div class="after-download" id="after-download" hidden aria-live="polite">
+        <h2 id="after-title">Your download has started</h2>
+        <ol id="after-steps"></ol>
+        <p class="after-more"><a href="#install">Full installation notes for both platforms</a></p>
+      </div>
+
+      <p class="fineprint" id="fineprint">
+        Version <b>1.0.0</b> · macOS 12 or later · Windows 10 or later.
+        The installers are not code-signed, so each operating system asks once whether you meant it —
+        <a href="#install">here is exactly what to click</a>.
+      </p>
+    </div>
+
+    <figure class="hero-art">
+      <picture>
+        <source media="(prefers-color-scheme: dark)"
+                srcset="assets/app-shot-dark-820.webp 820w, assets/app-shot-dark.webp 1640w"
+                sizes="(max-width: 900px) 92vw, 46vw">
+        <img class="hero-shot" src="assets/app-shot.webp" fetchpriority="high"
+             srcset="assets/app-shot-820.webp 820w, assets/app-shot.webp 1640w"
+             sizes="(max-width: 900px) 92vw, 46vw" width="1640" height="1400"
+             alt="The app after a comparison: “Redline ready”, 94 words added and 27 deleted, the two files it produced, and a Tom Bombadil quote beside a drawing of a plump pony.">
+      </picture>
+      <picture>
+        <source srcset="assets/pony-hero.webp" type="image/webp">
+        <img class="hero-pony" src="assets/pony-hero.png" width="282" height="320"
+             alt="Fatty Lumpkin, a plump dappled grey pony with a cream mane and a blue saddle blanket.">
+      </picture>
+    </figure>
+  </section>
+
+  <!-- ────────────────────────────── how ──────────────────────────────── -->
+  <section class="band" id="how">
+    <div class="band-head">
+      <h2>From your file manager to a redline, without a dialog box</h2>
+      <p>No compare settings. No “which parts do you want to include”. No uploading a confidential draft to a website.</p>
+    </div>
+
+    <div class="how-grid">
+      <ol class="steps">
+        <li>
+          <span class="step-n">1</span>
+          <div>
+            <h3>Select both documents</h3>
+            <p>In Finder or File Explorer, click the old version, then <kbd>⌘</kbd>/<kbd>Ctrl</kbd>-click the new one.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-n">2</span>
+          <div>
+            <h3>Right-click → Redline with Fatty Lumpkin</h3>
+            <p>Then pick <b>Word (track changes)</b>, <b>PDF</b>, or <b>both</b> straight from the menu.</p>
+            <figure class="menumap">
+              <div class="menucol">
+                <span class="menuos">Windows 11</span>
+                <ul class="menu">
+                  <li class="dim">Open</li>
+                  <li class="dim">Share</li>
+                  <li class="dim">Show more options ▸</li>
+                  <li class="here">Redline with Fatty Lumpkin ▸</li>
+                </ul>
+              </div>
+              <div class="menucol">
+                <span class="menuos">macOS</span>
+                <ul class="menu">
+                  <li class="dim">Open With ▸</li>
+                  <li class="dim">Get Info</li>
+                  <li class="dim">Quick Actions ▸</li>
+                  <li class="here">Redline as Word (track changes)</li>
+                </ul>
+              </div>
+              <figcaption>Where to look: under <b>Show more options</b> on Windows 11, under <b>Quick Actions</b> on a Mac.</figcaption>
+            </figure>
+          </div>
+        </li>
+        <li>
+          <span class="step-n">3</span>
+          <div>
+            <h3>Say which one is older</h3>
+            <p>One click. Fatty Lumpkin badges whichever document was saved earlier; you click that one, and the redline opens itself.</p>
+          </div>
+        </li>
+      </ol>
+
+      <figure class="shot-frame how-shot">
+        <picture>
+          <source media="(max-width: 720px) and (prefers-color-scheme: dark)" srcset="assets/app-shot-cards-dark-820.webp">
+          <source media="(max-width: 720px)" srcset="assets/app-shot-cards-820.webp">
+          <source media="(prefers-color-scheme: dark)"
+                  srcset="assets/app-shot-picker-dark-820.webp 820w, assets/app-shot-picker-dark.webp 1640w"
+                  sizes="(max-width: 940px) 92vw, 52vw">
+          <img src="assets/app-shot-picker.webp"
+               srcset="assets/app-shot-picker-820.webp 820w, assets/app-shot-picker.webp 1640w"
+               sizes="(max-width: 940px) 92vw, 52vw" width="1640" height="1400"
+               alt="The app asking “Which one is the older version?” with two document cards side by side; the first is badged “Saved 6 days earlier”.">
+        </picture>
+        <figcaption>The only question the app ever asks you.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── output ────────────────────────────── -->
+  <section class="band alt" id="output">
+    <div class="band-head">
+      <h2>Two ways to see what changed</h2>
+      <p>Word level, not paragraph level. If one number moved, one number is marked — not the whole clause.</p>
+    </div>
+
+    <div class="pair">
+      <article class="out-card">
+        <span class="pill">Word</span>
+        <h3>A real track-changes document</h3>
+        <p>Native Word revisions you can accept or reject one at a time. Accepting every change gives you the new document exactly; rejecting every change gives you the old one back.</p>
+        <figure class="shot-frame">
+          <img src="assets/word-shot.webp" loading="lazy"
+               srcset="assets/word-shot-820.webp 820w, assets/word-shot.webp 1445w"
+               sizes="(max-width: 760px) 92vw, 44vw" width="1445" height="842"
+               alt="A Word document showing tracked insertions underlined and deletions struck through, with change bars in the left margin.">
+        </figure>
+      </article>
+
+      <article class="out-card">
+        <span class="pill">PDF</span>
+        <h3>A clean marked-up PDF</h3>
+        <p>Additions in <ins>blue underline</ins>, removals in <del>red strikethrough</del>, change bars in the margin, and a header that counts everything. For sending to someone who just wants to read it.</p>
+        <figure class="shot-frame">
+          <img src="assets/pdf-shot.webp" loading="lazy"
+               srcset="assets/pdf-shot-820.webp 820w, assets/pdf-shot.webp 1445w"
+               sizes="(max-width: 760px) 92vw, 44vw" width="1445" height="972"
+               alt="A PDF redline: a header naming both documents and counting the changes, then contract text with blue underlined insertions and red struck-through deletions.">
+        </figure>
+      </article>
+    </div>
+
+    <p class="claim"><b>Nothing is uploaded.</b> The comparison runs entirely on your own machine. There is no account, no server, and the app makes no network requests at all.</p>
+
+    <ul class="facts">
+      <li><b>Word level.</b> Individual words and numbers are marked, never whole re-typed sentences.</li>
+      <li><b>Tables, lists and headings.</b> Added rows, deleted rows, edited cells and renumbered clauses all show up.</li>
+      <li><b>Footnotes, headers and footers too.</b> A change hiding in a footer is still a change.</li>
+      <li><b>Split and merged paragraphs.</b> Marked as a paragraph break, not as a paragraph re-typed.</li>
+      <li><b>Existing markup is settled first.</b> If either file already has tracked changes, they are accepted before comparing, so you see the real difference.</li>
+      <li><b>Big documents are fine.</b> A 400-clause schedule compares in well under a second.</li>
+    </ul>
+  </section>
+
+  <!-- ───────────────────────────── install ───────────────────────────── -->
+  <section class="band" id="install">
+    <div class="band-head">
+      <h2>Installing an unsigned app</h2>
+      <p>Fatty Lumpkin isn’t code-signed yet, so both operating systems ask once whether you meant it. Here is precisely what you’ll see.</p>
+    </div>
+
+    <div class="pair">
+      <article class="how-card" id="install-win">
+        <h3>
+          <span class="os-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 5.6 10.4 4.5v6.9H3Zm0 12.8L10.4 19.5v-6.8H3ZM11.6 4.3 21 3v8.4h-9.4Zm0 8.4H21V21l-9.4-1.3Z"/></svg>
+          </span>
+          Windows 10 &amp; 11
+        </h3>
+        <ol>
+          <li>Run <b>Fatty-Lumpkin-Doc-Compare-Setup-1.0.0.exe</b> from your Downloads folder.</li>
+          <li>A blue <b>“Windows protected your PC”</b> box appears. Click <b>More info</b>, then <b>Run anyway</b>.</li>
+          <li>Follow the installer. It installs for your user only — no administrator password needed.</li>
+          <li>The installer opens the app once when it finishes, and puts a shortcut on your desktop. That first launch is what adds the right-click menu.</li>
+        </ol>
+        <p class="note"><b>On Windows 11</b> the entry lives under <b>Show more options</b> in the right-click menu. Pressing <kbd>Shift</kbd>+<kbd>F10</kbd> instead of right-clicking opens that menu directly.</p>
+      </article>
+
+      <article class="how-card" id="install-mac">
+        <h3>
+          <span class="os-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M16.2 12.6c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8s-1.7-.8-2.8-.8c-1.5 0-2.8.9-3.6 2.2-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2s1.5-.7 2.8-.7 1.7.7 2.8.7 1.9-1 2.6-2a9 9 0 0 0 1.2-2.4c-.1 0-2.2-.9-2.2-3.5Z"/><path d="M14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>
+          </span>
+          macOS 12 and later
+        </h3>
+        <ol>
+          <li>Open the <b>.dmg</b> that matches your Mac and drag the pony into <b>Applications</b>.</li>
+          <li>Double-click the app. macOS will refuse the first time — that is expected.</li>
+          <li>Open <b>System Settings → Privacy &amp; Security</b>, scroll to the bottom, and click <b>Open Anyway</b> next to the message about Fatty Lumpkin. Confirm with <b>Open</b>.</li>
+          <li>The app adds three Quick Actions to Finder on first launch. Select two documents, right-click, and look under <b>Quick Actions</b>.</li>
+        </ol>
+        <p class="note">
+          <b>If macOS says the app “is damaged and can’t be opened”</b>, that is the quarantine flag your browser attached, not a broken download. Open Terminal and run:
+          <code class="block">xattr -dr com.apple.quarantine "/Applications/Fatty Lumpkin Doc Compare.app"</code>
+          then open the app again. <b>Not sure which Mac you have?</b> Apple menu → About This Mac; “Apple M1” or later means Apple Silicon.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────── faq ─────────────────────────────── -->
+  <section class="band alt" id="faq">
+    <div class="band-head"><h2>Questions</h2></div>
+    <div class="faq">
+      <details>
+        <summary>Does anything get uploaded?</summary>
+        <p>No. The whole comparison happens inside the app on your own machine. There is no account, no server, and the app makes no network requests. Your drafts never leave the computer they are on.</p>
+      </details>
+      <details>
+        <summary>Why are the Word insertions not blue?</summary>
+        <p>They are real Word revisions, and Word colours revisions by author using your own Track Changes settings — that is what makes them acceptable and rejectable one at a time. The PDF is where the colours are fixed: blue underline for additions, red strikethrough for deletions.</p>
+      </details>
+      <details>
+        <summary>My IT department blocked the download or the installer.</summary>
+        <p>Managed Windows fleets often refuse unsigned executables outright, and some block <code>.exe</code> downloads at the proxy. There is no way around that from this page — ask your IT desk to allow <code>Fatty-Lumpkin-Doc-Compare-Setup-1.0.0.exe</code>, and point them at the source, which is public and readable. Signing certificates are the long-term fix and are on the list.</p>
+      </details>
+      <details>
+        <summary>How do I get new versions?</summary>
+        <p>There is no auto-update. When there is a new version, this page and its version number change; download the new installer and run it over the top. Your settings and right-click menu survive the upgrade.</p>
+      </details>
+      <details>
+        <summary>What about moved text?</summary>
+        <p>Moves are shown as a deletion in the old place and an insertion in the new one, which is what most people find easiest to read. There is no separate “moved” treatment.</p>
+      </details>
+      <details>
+        <summary>Can I compare .doc files?</summary>
+        <p>Not directly — the old binary <code>.doc</code> format isn’t supported. Open it in Word and use <b>Save As → Word Document (.docx)</b> first. The app tells you this if you try.</p>
+      </details>
+      <details>
+        <summary>Where do the redlines get saved?</summary>
+        <p>Next to the newer document, named <code>Redline - NEW vs OLD.docx</code>. If that folder is read-only the app offers to put them on your Desktop instead, and you can make that the default in Settings.</p>
+      </details>
+      <details>
+        <summary>What are the pony and the poetry about?</summary>
+        <p>Fatty Lumpkin is Tom Bombadil’s pony in <i>The Lord of the Rings</i> — stout, unbothered, and reliably where he said he’d be. Every finished redline comes with a line from one of Tom’s songs. It costs nothing and it is nice.</p>
+      </details>
+      <details>
+        <summary>Can I remove the right-click menu?</summary>
+        <p>Yes — Settings → Right-click menu → Remove. On Windows it only ever writes to your own user’s registry; on macOS it drops three files in <code>~/Library/Services</code> and takes them away again.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="assets/pony-mark.webp" alt="" width="40" height="40">
+    <div>
+      <p><b>Fatty Lumpkin Doc Compare</b> · version 1.0.0</p>
+      <p class="muted">
+        Something not working? Mail <a href="mailto:mcallers@gmail.com">mcallers@gmail.com</a> with what you clicked and what happened.
+        Quotations from J.R.R. Tolkien’s <i>The Lord of the Rings</i>, used briefly and with affection.
+      </p>
+    </div>
+    <a class="btn btn-quiet btn-small" href="https://github.com/MCALLERS/fatty-lumpkin-doc-compare/releases/latest">All releases</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

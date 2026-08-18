@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  },
+  "name": "fatty-lumpkin-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "QA harness for Fatty Lumpkin Doc Compare. The app itself lives in app/.",
+  "scripts": {
+    "shots": "node qa/shoot-app.mjs",
+    "site-shots": "node qa/shoot-site.mjs",
+    "samples": "node qa/build-samples.mjs",
+    "smoke": "xvfb-run -a node qa/smoke-electron.mjs"
+  }
+}

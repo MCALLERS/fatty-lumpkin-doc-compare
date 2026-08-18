@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none';">
+<title>Fatty Lumpkin Doc Compare</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-screen="drop">
+
+<div class="titlebar" aria-hidden="true"></div>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="brand">
+    <img class="brand-mark" src="assets/pony-mark.png" alt="" width="28" height="28">
+    <span class="brand-name">Fatty Lumpkin <em>Doc Compare</em></span>
+  </div>
+  <button type="button" class="icon-btn" id="settings-btn" aria-label="Settings" aria-haspopup="dialog" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="m19.4 13-.2-1 .2-1 1.6-1.2-1.6-2.8-1.9.6-1.7-1L14.9 3h-3.2l-.9 1.9-1.7 1-1.9-.6-1.6 2.8L7.2 9.3l-.2 1 .2 1-1.6 1.2 1.6 2.8 1.9-.6 1.7 1 .9 2.3h3.2l.9-2.3 1.7-1 1.9.6 1.6-2.8L19.4 13Z"/></svg>
+  </button>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- ─────────────────────────── drop ─────────────────────────── -->
+  <section class="screen" data-name="drop" aria-labelledby="drop-title">
+    <button type="button" class="dropzone" id="dropzone">
+      <img class="drop-pony" src="assets/pony-hero.png" alt="" width="112" height="128">
+      <span class="drop-title" id="drop-title">Drop two Word documents here</span>
+      <span class="drop-help" id="drop-help">Word track changes, PDF, or both.</span>
+      <span class="drop-fake-btn" aria-hidden="true">Choose documents…</span>
+    </button>
+    <div class="notice-inline" id="drop-notice" role="status" aria-live="polite" hidden></div>
+    <ul class="staged" id="staged" role="status" aria-live="polite" hidden></ul>
+    <div class="row staged-actions" id="staged-actions" hidden>
+      <button type="button" class="btn btn-primary" id="staged-continue">Continue with these two</button>
+      <button type="button" class="btn btn-quiet" id="staged-clear">Start over</button>
+    </div>
+    <p class="drop-hint" id="drop-hint">
+      Or select two files in <span data-file-manager>your file manager</span>, right-click, and pick <b>Redline with Fatty Lumpkin</b>.
+    </p>
+  </section>
+
+  <!-- ─────────────────────────── picker ────────────────────────── -->
+  <section class="screen" data-name="picker" aria-labelledby="picker-title">
+    <div class="stack">
+      <div class="head">
+        <p class="eyebrow" id="picker-step" hidden>Step 1 of 2</p>
+        <h1 id="picker-title">Which one is the <em>older</em> version?</h1>
+        <p class="sub" id="picker-sub">Click it and the redline starts.</p>
+      </div>
+
+      <div class="picker-top">
+        <fieldset class="segmented" id="mode-group">
+          <legend>Give me</legend>
+          <div class="seg">
+            <input type="radio" name="mode" id="mode-word" value="word"><label for="mode-word">Word</label>
+            <input type="radio" name="mode" id="mode-pdf" value="pdf"><label for="mode-pdf">PDF</label>
+            <input type="radio" name="mode" id="mode-both" value="both"><label for="mode-both">Both</label>
+          </div>
+        </fieldset>
+        <p class="keyhint" id="key-hint"></p>
+      </div>
+
+      <div class="cards" id="cards"></div>
+
+      <div class="picker-foot">
+        <button type="button" class="btn btn-quiet" id="pick-other">Choose different documents</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── working ───────────────────────── -->
+  <section class="screen" data-name="working" aria-labelledby="working-title">
+    <div class="stack center">
+      <div class="trot" aria-hidden="true">
+        <img class="trot-pony" src="assets/pony-hero.png" alt="" width="70" height="80">
+        <div class="trot-track"><span class="trot-fill"></span></div>
+      </div>
+      <h1 id="working-title">Marking up your documents…</h1>
+      <p class="sub" id="working-step" role="status" aria-live="polite"></p>
+      <p class="hint" id="working-files"></p>
+      <div class="row"><button type="button" class="btn btn-quiet" id="cancel-btn">Cancel</button></div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── done ──────────────────────────── -->
+  <section class="screen" data-name="done" aria-labelledby="done-title">
+    <div class="stack">
+      <div class="done-head">
+        <span class="tick" id="done-mark" aria-hidden="true">
+          <svg class="mark-tick" viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+          <svg class="mark-equal" viewBox="0 0 24 24" focusable="false"><path d="M5 10h14M5 15h14"/></svg>
+        </span>
+        <div>
+          <h1 id="done-title">Redline ready</h1>
+          <p class="sub" id="done-summary"></p>
+        </div>
+      </div>
+
+      <div class="direction" id="direction">
+        <span>Compared</span>
+        <b id="dir-old"></b>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+        <b id="dir-new"></b>
+        <button type="button" class="btn btn-quiet btn-small" id="swap-btn" aria-label="Swap the two documents and redline again">Swap and redo</button>
+      </div>
+
+      <ul class="outputs" id="outputs"></ul>
+
+      <figure class="reward" id="reward">
+        <img class="reward-pony" src="assets/pony-hero.png" alt="Fatty Lumpkin, a plump grey pony" width="88" height="100">
+        <div class="reward-text">
+          <blockquote id="quote-line"></blockquote>
+          <figcaption id="quote-source"></figcaption>
+        </div>
+      </figure>
+
+      <div class="row">
+        <button type="button" class="btn btn-primary" id="open-btn" hidden></button>
+        <button type="button" class="btn btn-quiet" id="also-btn" hidden></button>
+        <button type="button" class="btn btn-quiet" id="again-btn">Redline another pair</button>
+        <button type="button" class="btn btn-quiet" id="close-btn">Done</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── error ─────────────────────────── -->
+  <section class="screen" data-name="error" aria-labelledby="error-title">
+    <div class="stack">
+      <div class="notice">
+        <span class="notice-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M12 8v5"/><path d="M12 16.5h.01"/><circle cx="12" cy="12" r="9"/></svg>
+        </span>
+        <div>
+          <h1 id="error-title">That didn’t work</h1>
+          <p class="sub" id="error-message" role="alert"></p>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-primary" id="retry-btn">Try again</button>
+        <button type="button" class="btn btn-quiet" id="error-alt-btn" hidden></button>
+        <button type="button" class="btn btn-quiet" id="error-choose-btn">Choose different documents</button>
+      </div>
+      <details class="details" id="error-details" hidden>
+        <summary>Technical details</summary>
+        <pre id="error-detail-text"></pre>
+        <div class="details-actions">
+          <button type="button" class="btn btn-quiet btn-small" id="copy-detail-btn">Copy details</button>
+        </div>
+      </details>
+    </div>
+  </section>
+</main>
+
+<!-- ─────────────────────────── settings ───────────────────────── -->
+<div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+  <div class="sheet-head">
+    <h2 id="sheet-title">Settings</h2>
+    <button type="button" class="icon-btn" id="sheet-close" aria-label="Close settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="sheet-body">
+    <label class="opt" for="opt-open">
+      <input type="checkbox" id="opt-open" aria-describedby="opt-open-d">
+      <span><b>Open the redline when it’s ready</b><small id="opt-open-d">Launches Word or your PDF reader automatically.</small></span>
+    </label>
+    <label class="opt" for="opt-desktop">
+      <input type="checkbox" id="opt-desktop" aria-describedby="opt-desktop-d">
+      <span><b>Save redlines to the Desktop</b><small id="opt-desktop-d">Otherwise they land next to the newer document.</small></span>
+    </label>
+    <div class="opt opt-stack">
+      <label for="opt-author"><b>Name on the tracked changes</b>
+        <small id="opt-author-d">Who the redline is attributed to in Word’s review pane.</small></label>
+      <input type="text" id="opt-author" class="text-input" aria-describedby="opt-author-d" spellcheck="false" autocomplete="off">
+    </div>
+    <div class="opt opt-block" id="ctx-row">
+      <span><b>Right-click menu</b><small id="ctx-note">Adds “Redline with Fatty Lumpkin” to your file manager.</small></span>
+      <button type="button" class="btn btn-quiet btn-small" id="ctx-btn">Add</button>
+    </div>
+    <p class="version" id="version-line"></p>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

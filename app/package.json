@@ -1,0 +1,127 @@
+{
+  "name": "fatty-lumpkin-doc-compare",
+  "productName": "Fatty Lumpkin Doc Compare",
+  "version": "1.0.0",
+  "description": "Dead-simple Word document redlining. Right-click two .docx files and get a track-changes document or a marked-up PDF.",
+  "main": "src/main/main.js",
+  "author": {
+    "name": "Bombadillo AI",
+    "email": "mcallers@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/run-tests.mjs",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "smoke": "xvfb-run -a node ../qa/smoke-electron.mjs"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.6",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "electron": "^32.2.6",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.bombadillo.fattylumpkin",
+    "productName": "Fatty Lumpkin Doc Compare",
+    "copyright": "Copyright \u00a9 2026 Bombadillo AI",
+    "directories": {
+      "output": "../dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "!**/*.map"
+    ],
+    "extraResources": [
+      {
+        "from": "build/icon-256.png",
+        "to": "icon.png"
+      }
+    ],
+    "artifactName": "Fatty-Lumpkin-Doc-Compare-${version}-${arch}.${ext}",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "darkModeSupport": true,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "identity": null,
+      "extendInfo": {
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Word Document",
+            "CFBundleTypeRole": "Viewer",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "org.openxmlformats.wordprocessingml.document",
+              "org.openxmlformats.wordprocessingml.document.macroenabled",
+              "com.microsoft.word.doc"
+            ]
+          }
+        ]
+      }
+    },
+    "dmg": {
+      "artifactName": "Fatty-Lumpkin-Doc-Compare-${version}-${arch}.${ext}",
+      "title": "Fatty Lumpkin Doc Compare",
+      "contents": [
+        {
+          "x": 140,
+          "y": 200,
+          "type": "file"
+        },
+        {
+          "x": 400,
+          "y": 200,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "artifactName": "Fatty-Lumpkin-Doc-Compare-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Fatty Lumpkin Doc Compare",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Office",
+      "icon": "build/icon.png"
+    }
+  }
+}
