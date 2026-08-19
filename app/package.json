@@ -1,7 +1,7 @@
 {
   "name": "fatty-lumpkin-doc-compare",
   "productName": "Fatty Lumpkin Doc Compare",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Dead-simple Word document redlining. Right-click two .docx files and get a track-changes document or a marked-up PDF.",
   "main": "src/main/main.js",
   "author": {
@@ -116,6 +116,7 @@
       ],
       "category": "Office",
       "icon": "build/icon.png"
-    }
+    },
+    "afterPack": "build/adhoc-sign.js"
   }
 }

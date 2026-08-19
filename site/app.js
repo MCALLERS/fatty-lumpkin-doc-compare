@@ -9,7 +9,7 @@
 
   const REPO = 'https://github.com/MCALLERS/fatty-lumpkin-doc-compare';
   const LATEST = `${REPO}/releases/latest`;
-  const VERSION = '1.0.0';
+  const VERSION = '1.0.4';
   const asset = (file) => `${LATEST}/download/${file}`;
 
   const APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.2 12.6c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8s-1.7-.8-2.8-.8c-1.5 0-2.8.9-3.6 2.2-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2s1.5-.7 2.8-.7 1.7.7 2.8.7 1.9-1 2.6-2a9 9 0 0 0 1.2-2.4c-.1 0-2.2-.9-2.2-3.5Z"/><path d="M14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2Z"/></svg>';
@@ -36,7 +36,7 @@
 
   const STEPS = {
     win: [
-      'Open <b>Fatty-Lumpkin-Doc-Compare-Setup-1.0.0.exe</b> from your Downloads folder.',
+      'Open <b>Fatty-Lumpkin-Doc-Compare-Setup-1.0.4.exe</b> from your Downloads folder.',
       'Windows shows a blue <b>“Windows protected your PC”</b> box. Click <b>More info</b>, then <b>Run anyway</b>.',
       'Finish the installer — no administrator password is needed.',
       'Select two Word documents, right-click, and choose <b>Redline with Fatty Lumpkin</b>. On Windows 11 it is under <b>Show more options</b>.',
