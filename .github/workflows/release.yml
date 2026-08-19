@@ -68,7 +68,10 @@ jobs:
         working-directory: app
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
-        run: npx electron-builder --mac --publish never
+        run: |
+          npx electron-builder --mac --arm64 --publish never
+          hdiutil detach "/Volumes/Fatty Lumpkin Doc Compare" 2>/dev/null || true
+          npx electron-builder --mac --x64 --publish never
 
       - name: Build installer (Windows)
         if: matrix.name == 'win'
